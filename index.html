@@ -3,125 +3,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bingo - Casamento Kelly & David</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Segoe+UI&display=swap" rel="stylesheet">
+  <title>Sorteador de Bingo</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom right, #fefefe, #f8f5f2);
-      color: #444;
+      background: linear-gradient(135deg, #2980b9, #6dd5fa);
+      color: #fff;
       text-align: center;
       padding: 2rem;
-      margin: 0;
     }
 
     h1 {
-      font-family: 'Great Vibes', cursive;
       font-size: 3rem;
-      color: #b58e63;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
     }
 
-    .subtitulo {
-      font-size: 1.2rem;
-      color: #888;
-      margin-bottom: 2rem;
-    }
-
-    .numero-sorteado {
-      font-size: 4rem;
-      margin: 2rem 0;
+    #numero {
+      font-size: 8rem;
       font-weight: bold;
-      background: #fffaf4;
-      color: #b58e63;
-      padding: 1rem 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      border: 2px solid #f3e7d9;
+      margin: 2rem 0;
+      background-color: #3498db;
+      display: inline-block;
+      padding: 2rem 4rem;
+      border-radius: 30px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+      color: #ecf0f1;
     }
 
     button {
-      background-color: #d8c3a5;
-      color: white;
+      font-size: 1.5rem;
+      padding: 1rem 2rem;
       border: none;
-      border-radius: 30px;
-      padding: 1rem 2.5rem;
-      font-size: 1.2rem;
-      font-weight: bold;
+      border-radius: 15px;
+      background-color: #1abc9c;
+      color: white;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
 
     button:hover {
-      background-color: #c2a989;
+      background-color: #16a085;
     }
 
-    .numeros-anteriores {
-      margin-top: 3rem;
-    }
-
-    .numeros-anteriores h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #b58e63;
-    }
-
-    .lista {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.6rem;
-      margin-top: 1rem;
-    }
-
-    .bola {
-      background: #fff2d9;
-      color: #b58e63;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
+    #numeros-sorteados {
+      margin-top: 2rem;
       font-size: 1.2rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      border: 1px solid #f1e4cd;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #ecf0f1;
     }
   </style>
 </head>
 <body>
-  <h1>Kelly & David</h1>
-  <div class="subtitulo">Bingo do Casamento</div>
+  <h1>Sorteador de Bingo</h1>
+  <div id="numero">--</div><br />
+  <button onclick="sortear()">Sortear Número</button>
 
-  <div class="numero-sorteado" id="numeroSorteado">Clique para começar</div>
-  <button onclick="sortearNumero()">🎲 Sortear Número</button>
-
-  <div class="numeros-anteriores">
-    <h3>Números Sorteados:</h3>
-    <div class="lista" id="historico"></div>
-  </div>
+  <div id="numeros-sorteados"></div>
 
   <script>
-    const numerosDisponiveis = Array.from({ length: 75 }, (_, i) => i + 1);
-    const numerosSorteados = [];
+    let numerosDisponiveis = Array.from({ length: 75 }, (_, i) => i + 1);
+    let numerosSorteados = [];
 
-    function sortearNumero() {
+    function sortear() {
       if (numerosDisponiveis.length === 0) {
-        document.getElementById("numeroSorteado").innerText = "Todos os números foram sorteados!";
+        alert("Todos os números já foram sorteados!");
         return;
       }
 
-      const index = Math.floor(Math.random() * numerosDisponiveis.length);
-      const numero = numerosDisponiveis.splice(index, 1)[0];
+      const indice = Math.floor(Math.random() * numerosDisponiveis.length);
+      const numero = numerosDisponiveis.splice(indice, 1)[0];
       numerosSorteados.push(numero);
 
-      document.getElementById("numeroSorteado").innerText = numero;
+      document.getElementById("numero").innerText = numero;
 
-      const bola = document.createElement("div");
-      bola.className = "bola";
-      bola.innerText = numero;
-      document.getElementById("historico").appendChild(bola);
+      document.getElementById("numeros-sorteados").innerText =
+        "Números sorteados: " + numerosSorteados.join(", ");
     }
   </script>
 </body>

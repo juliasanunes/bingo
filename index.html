@@ -3,50 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sorteador de Bingo</title>
+  <title>Bingo - Casamento Kelly & David</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Segoe+UI&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #2980b9, #6dd5fa);
-      color: #fff;
+      background: linear-gradient(to bottom right, #fefefe, #f8f5f2);
+      color: #444;
       text-align: center;
       padding: 2rem;
       margin: 0;
     }
+
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: #b58e63;
+      margin-bottom: 0.5rem;
     }
+
+    .subtitulo {
+      font-size: 1.2rem;
+      color: #888;
+      margin-bottom: 2rem;
+    }
+
     .numero-sorteado {
-      font-size: 5rem;
+      font-size: 4rem;
       margin: 2rem 0;
       font-weight: bold;
-      background: #ffffff22;
+      background: #fffaf4;
+      color: #b58e63;
       padding: 1rem 2rem;
       border-radius: 1rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border: 2px solid #f3e7d9;
     }
+
     button {
-      background-color: #27ae60;
+      background-color: #d8c3a5;
       color: white;
       border: none;
-      border-radius: 10px;
-      padding: 1rem 2rem;
+      border-radius: 30px;
+      padding: 1rem 2.5rem;
       font-size: 1.2rem;
       font-weight: bold;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
+
     button:hover {
-      background-color: #219150;
+      background-color: #c2a989;
     }
+
     .numeros-anteriores {
       margin-top: 3rem;
     }
+
     .numeros-anteriores h3 {
       font-size: 1.5rem;
       margin-bottom: 1rem;
+      color: #b58e63;
     }
+
     .lista {
       display: flex;
       flex-wrap: wrap;
@@ -54,9 +73,10 @@
       gap: 0.6rem;
       margin-top: 1rem;
     }
+
     .bola {
-      background: #f1c40f;
-      color: #2c3e50;
+      background: #fff2d9;
+      color: #b58e63;
       border-radius: 50%;
       width: 50px;
       height: 50px;
@@ -65,14 +85,18 @@
       justify-content: center;
       font-weight: bold;
       font-size: 1.2rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border: 1px solid #f1e4cd;
     }
   </style>
 </head>
 <body>
-  <h1>Sorteador de Bingo</h1>
+  <h1>Kelly & David</h1>
+  <div class="subtitulo">Bingo do Casamento</div>
+
   <div class="numero-sorteado" id="numeroSorteado">Clique para começar</div>
   <button onclick="sortearNumero()">🎲 Sortear Número</button>
+
   <div class="numeros-anteriores">
     <h3>Números Sorteados:</h3>
     <div class="lista" id="historico"></div>
